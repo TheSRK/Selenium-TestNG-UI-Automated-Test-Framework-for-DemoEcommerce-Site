@@ -1,3 +1,5 @@
+package Base;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -7,7 +9,7 @@ import org.testng.annotations.BeforeTest;
 import java.time.Duration;
 
 public class Setup {
-    WebDriver driver;
+    public WebDriver driver;
 
     @BeforeTest
     public void Setup(){
@@ -16,13 +18,13 @@ public class Setup {
         ops.addArguments("--headed");
 
         driver = new ChromeDriver(ops);
-        driver.get("http://automationpractice.com/");
+        //driver.get("http://automationpractice.com/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
     @AfterTest
     public void logout(){
-        driver.close();
+        //driver.close();
     }
 }
