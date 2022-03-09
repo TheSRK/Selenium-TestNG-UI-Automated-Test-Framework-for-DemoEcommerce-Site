@@ -14,7 +14,7 @@ public class ProductPurchase {
     @FindBy(css = "img")
     List<WebElement> productImage;
 
-    @FindBy(name = "add-to-cart")
+    @FindBy(xpath = "//button[@name ='add-to-cart'][contains(text(), 'Add to cart')]")
     WebElement btnCart;
 
     @FindBy(xpath ="//a[contains(text(), 'View cart')]" )

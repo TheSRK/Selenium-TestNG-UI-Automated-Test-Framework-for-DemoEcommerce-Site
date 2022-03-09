@@ -11,7 +11,7 @@ import java.time.Duration;
 public class Setup {
     public WebDriver driver;
 
-    @BeforeTest
+    @BeforeTest(groups = "purchase")
     public void Setup(){
         System.setProperty("webdriver.chrome.driver", "./src/test/resources/chromedriver.exe");
         ChromeOptions ops = new ChromeOptions();
@@ -23,8 +23,8 @@ public class Setup {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
-    @AfterTest
+    @AfterTest(groups = "purchase")
     public void logout(){
-        //driver.close();
+        driver.close();
     }
 }

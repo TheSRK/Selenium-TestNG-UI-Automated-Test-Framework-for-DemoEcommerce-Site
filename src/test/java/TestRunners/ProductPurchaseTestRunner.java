@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class ProductPurchaseTestRunner extends Setup {
 
 
-    @Test
+    @Test(priority = 0, enabled = true, groups = "purchase")
     public void testProductPurchase() throws InterruptedException {
         ProductPurchase productPurchase = new ProductPurchase(driver);
         driver.get("https://envothemes.com/envo-ecommerce/");
@@ -16,7 +16,7 @@ public class ProductPurchaseTestRunner extends Setup {
         Assert.assertEquals(text,"Billing details");
     }
 
-    @Test
+    @Test(priority = 1, groups = "purchase")
     public void testProductPurchaseFromDropdown() throws InterruptedException {
         ProductPurchase productPurchase = new ProductPurchase(driver);
         driver.get("https://envothemes.com/envo-ecommerce/");
