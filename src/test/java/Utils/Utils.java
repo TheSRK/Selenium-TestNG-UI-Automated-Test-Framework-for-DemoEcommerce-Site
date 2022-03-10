@@ -8,6 +8,7 @@ import org.json.simple.parser.ParseException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.PageFactory;
 
 import java.io.File;
@@ -64,6 +65,22 @@ public class Utils {
 
         setEmail((String) jsonObject.get("email"));
         setPassword((String) jsonObject.get("password"));
+    }
+
+    //Screenshot
+    public void takeScreenshot() throws IOException {
+        //convert webdriver object to TakesScreenshot
+        TakesScreenshot screenshot = (TakesScreenshot) driver;
+        //Call fetScreenshotAs method to create image file
+        File screenshotFile = screenshot.getScreenshotAs(OutputType.FILE);
+        String time = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss-aa").format(new Date());
+        String fileWithPath = "./src/test/resources/screenshots/"+ time+ ".png";
+        File DestFile = new File(fileWithPath);
+        FileUtils.copyFile(screenshotFile, DestFile);
+        //FileHandler.copy(screenshotFile, DestFile);
+
+
+
     }
 
 
