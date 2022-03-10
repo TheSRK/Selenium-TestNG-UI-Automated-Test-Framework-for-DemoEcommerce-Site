@@ -77,7 +77,7 @@ public class Utils {
         String fileWithPath = "./src/test/resources/screenshots/"+ time+ ".png";
         File DestFile = new File(fileWithPath);
         FileUtils.copyFile(screenshotFile, DestFile);
-        //FileHandler.copy(screenshotFile, DestFile);
+        //FileHandler.copy(screenshotFile, DestFile); use this if FileUtils doesn't work
 
 
 
