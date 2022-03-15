@@ -1,29 +1,21 @@
 package Utils;
 
-import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.PageFactory;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-public class Utils {
+public class JsonReader {
     WebDriver driver;
     String email;
     String password;
 
-    public Utils(WebDriver driver){
+    public JsonReader(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
 
@@ -67,21 +59,7 @@ public class Utils {
         setPassword((String) jsonObject.get("password"));
     }
 
-    //Screenshot
-    public void takeScreenshot() throws IOException {
-        //convert webdriver object to TakesScreenshot
-        TakesScreenshot screenshot = (TakesScreenshot) driver;
-        //Call fetScreenshotAs method to create image file
-        File screenshotFile = screenshot.getScreenshotAs(OutputType.FILE);
-        String time = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss-aa").format(new Date());
-        String fileWithPath = "./src/test/resources/screenshots/"+ time+ ".png";
-        File DestFile = new File(fileWithPath);
-        FileUtils.copyFile(screenshotFile, DestFile);
-        //FileHandler.copy(screenshotFile, DestFile); use this if FileUtils doesn't work
 
-
-
-    }
 
 
 }

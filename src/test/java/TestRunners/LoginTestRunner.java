@@ -1,24 +1,24 @@
 package TestRunners;
 
-import Base.Setup;
+import Base.BaseTest;
 import Pages.Login;
-import Utils.Utils;
+import Utils.JsonReader;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class LoginTestRunner extends Setup {
+public class LoginTestRunner extends BaseTest {
     //@Test
     public void loginTest() throws IOException, ParseException {
         driver.get("http://automationpractice.com/");
         Login login = new Login(driver);
 
-        Utils utils = new Utils(driver);
-        utils.readJSONArray(0);
+        JsonReader jsonReader = new JsonReader(driver);
+        jsonReader.readJSONArray(0);
 
-        String user = login.doLogin(utils.getEmail(), utils.getPassword());
+        String user = login.doLogin(jsonReader.getEmail(), jsonReader.getPassword());
         Assert.assertEquals(user, "viva test");
 
 
@@ -30,11 +30,11 @@ public class LoginTestRunner extends Setup {
     public void loginWithInvalidEmailTest() throws IOException, ParseException {
         driver.get("http://automationpractice.com/");
         Login login = new Login(driver);
-        Utils utils = new Utils(driver);
+        JsonReader jsonReader = new JsonReader(driver);
 
-        utils.readJSONArray(1);
+        jsonReader.readJSONArray(1);
 
-        String lblInvalidEmail = login.loginWithInvalidEmail(utils.getEmail(), utils.getPassword());
+        String lblInvalidEmail = login.loginWithInvalidEmail(jsonReader.getEmail(), jsonReader.getPassword());
         Assert.assertEquals(lblInvalidEmail, "Invalid email address.");
 
     }
@@ -43,11 +43,11 @@ public class LoginTestRunner extends Setup {
     public void loginWithInvalidPasswordTest() throws IOException, ParseException {
         driver.get("http://automationpractice.com/");
         Login login = new Login(driver);
-        Utils utils = new Utils(driver);
+        JsonReader jsonReader = new JsonReader(driver);
 
-        utils.readJSONArray(2);
+        jsonReader.readJSONArray(2);
 
-        String lblInvalidPassword = login.loginWithInvalidPassword(utils.getEmail(), utils.getPassword());
+        String lblInvalidPassword = login.loginWithInvalidPassword(jsonReader.getEmail(), jsonReader.getPassword());
         Assert.assertEquals(lblInvalidPassword, "Authentication failed.");
     }
 

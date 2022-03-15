@@ -1,38 +1,41 @@
 package Base;
 
-import Utils.Utils;
+import Utils.BrowserManager;
+import Utils.Constants;
+import Utils.SuiteListener;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 import java.io.IOException;
-import java.time.Duration;
 
-public class Setup {
-    public WebDriver driver;
+public class BaseTest {
+    public static WebDriver driver;
+
 
     @BeforeTest(groups = "purchase")
+    //@Parameters(value = {"browserName"})
     public void Setup(){
-        System.setProperty("webdriver.chrome.driver", "./src/test/resources/chromedriver.exe");
-        ChromeOptions ops = new ChromeOptions();
-        ops.addArguments("--headed");
+        BrowserManager.doBrowserSetup(Constants.browserName);
+        //get URL
+        driver.get(Constants.BaseUrl);
 
-        driver = new ChromeDriver(ops);
-        //driver.get("http://automationpractice.com/");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+
+
     }
 
+
+    /**
+     * this method takes screenshot upon failed test
+     */
     @AfterMethod(groups = "purchase")
     public void screenShot(ITestResult result) throws IOException {
         if (ITestResult.FAILURE == result.getStatus()) {
             try {
-                Utils util = new Utils(driver);
-                util.takeScreenshot();
+               SuiteListener suiteListener = new SuiteListener();
+                suiteListener.onTestFailure(result);
             } catch (Exception exception) {
                 System.out.println(exception.toString());
             }
@@ -45,4 +48,7 @@ public class Setup {
     public void logout(){
         driver.close();
     }
+
+
+
 }
