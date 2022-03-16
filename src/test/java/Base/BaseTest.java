@@ -1,5 +1,6 @@
 package Base;
 
+import Pages.HomePage;
 import Utils.BrowserManager;
 import Utils.Constants;
 import Utils.SuiteListener;
@@ -13,24 +14,24 @@ import java.io.IOException;
 
 public class BaseTest {
     public static WebDriver driver;
+    protected HomePage homePage;
 
 
-    @BeforeTest(groups = "purchase")
+    @BeforeTest(groups = "shop")
     //@Parameters(value = {"browserName"})
     public void Setup(){
         BrowserManager.doBrowserSetup(Constants.browserName);
         //get URL
         driver.get(Constants.BaseUrl);
-
-
+        homePage = new HomePage(driver);
 
     }
-
 
     /**
      * this method takes screenshot upon failed test
      */
-    @AfterMethod(groups = "purchase")
+
+    @AfterMethod(groups = "shop")
     public void screenShot(ITestResult result) throws IOException {
         if (ITestResult.FAILURE == result.getStatus()) {
             try {
@@ -44,7 +45,7 @@ public class BaseTest {
 
 
 
-    @AfterTest(groups = "purchase")
+    @AfterTest(groups = "shop")
     public void logout(){
         driver.close();
     }

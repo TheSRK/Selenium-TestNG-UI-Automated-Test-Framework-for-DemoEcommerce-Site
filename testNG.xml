@@ -3,7 +3,7 @@
     <test name="product purchase">
         <groups>
             <run>
-                <include name="purchase"></include>
+                <include name="shop"></include>
             </run>
         </groups>
 <!--        <listeners>-->
@@ -13,7 +13,7 @@
 <!--        <parameter name="browserName" value="chrome" />-->
 
         <classes>
-            <class name="TestRunners.ProductPurchaseTestRunner"/>
+            <class name="TestRunners.ShopPageTestRunner"/>
         </classes>
     </test>
 </suite>
