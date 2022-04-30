@@ -16,7 +16,7 @@ public class LoginTestRunner extends BaseTest {
         Login login = new Login(driver);
 
         JsonReader jsonReader = new JsonReader(driver);
-        jsonReader.readJSONArray(0);
+        jsonReader.readJSONArray(1);
 
         String user = login.doLogin(jsonReader.getEmail(), jsonReader.getPassword());
         Assert.assertEquals(user, "viva test");

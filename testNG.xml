@@ -1,11 +1,11 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite thread-count="1" verbose="1" name="E-commerce portal automation">
     <test name="product purchase">
-        <groups>
-            <run>
-                <include name="shop"></include>
-            </run>
-        </groups>
+<!--        <groups>-->
+<!--            <run>-->
+<!--                <include name="shop"></include>-->
+<!--            </run>-->
+<!--        </groups>-->
 <!--        <listeners>-->
 <!--            <listener class-name="TestRunners"/>-->
 <!--        </listeners>-->
@@ -13,7 +13,7 @@
 <!--        <parameter name="browserName" value="chrome" />-->
 
         <classes>
-            <class name="TestRunners.ShopPageTestRunner"/>
+            <class name="TestRunners.LoginTestRunner"/>
         </classes>
     </test>
 </suite>

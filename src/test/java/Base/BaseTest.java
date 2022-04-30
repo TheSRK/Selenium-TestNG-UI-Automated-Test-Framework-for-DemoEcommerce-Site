@@ -4,7 +4,11 @@ import Pages.HomePage;
 import Utils.BrowserManager;
 import Utils.Constants;
 import Utils.SuiteListener;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -19,12 +23,11 @@ public class BaseTest {
 
     @BeforeTest(groups = "shop")
     //@Parameters(value = {"browserName"})
-    public void Setup(){
+    public void Setup() throws InterruptedException {
         BrowserManager.doBrowserSetup(Constants.browserName);
         //get URL
         driver.get(Constants.BaseUrl);
         homePage = new HomePage(driver);
-
     }
 
     /**
