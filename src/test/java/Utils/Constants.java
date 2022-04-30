@@ -6,7 +6,6 @@ public interface Constants {
     String firefoxDriverPath = "./src/test/resources/drivers/geckodriver.exe";
     String browserName = "chrome";
     String browserMode = "--headed";
-    long waitTime = 30;
-
+    long waitTime = 30;  // Test
 
 }
