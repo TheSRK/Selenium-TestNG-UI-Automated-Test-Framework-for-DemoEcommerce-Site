@@ -1,9 +1,11 @@
 package Utils;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+
 
 import static Base.BaseTest.driver;
 
@@ -19,7 +21,8 @@ public class BrowserManager {
     public static void doBrowserSetup(String browserName){
         if (browserName.equalsIgnoreCase("chrome")){
             //steup chrome browser
-            System.setProperty("webdriver.chrome.driver", Constants.chromeDriverPath);
+            //System.setProperty("webdriver.chrome.driver", Constants.chromeDriverPath);
+
 
             /**
              * Add options for --headed or --headless browser launch
@@ -29,8 +32,7 @@ public class BrowserManager {
             chromeOptions.addArguments(Constants.browserMode);
 
             //initialize driver for chrome
-            driver = new ChromeDriver(chromeOptions);
-
+            driver = WebDriverManager.chromedriver().capabilities(chromeOptions).create();
             //maximize window
             driver.manage().window().maximize();
 
@@ -42,7 +44,7 @@ public class BrowserManager {
         }
         else if (browserName.equalsIgnoreCase("firefox")){
             //setup firefox browser
-            System.setProperty("webdriver.gecko.driver",Constants.firefoxDriverPath);
+            //System.setProperty("webdriver.gecko.driver",Constants.firefoxDriverPath);
 
             /**
              * Add options for --headed or --headless browser launch
@@ -52,7 +54,7 @@ public class BrowserManager {
             firefoxOptions.addArguments(Constants.browserMode);
 
             //initialize driver for firefox
-            driver = new FirefoxDriver(firefoxOptions);
+            driver = WebDriverManager.firefoxdriver().capabilities(firefoxOptions).create();
 
             //maximize window
             driver.manage().window().maximize();
@@ -72,7 +74,7 @@ public class BrowserManager {
             chromeOptions.addArguments(Constants.browserMode);
 
             //initialize driver for chrome
-            driver = new ChromeDriver(chromeOptions);
+            driver = WebDriverManager.chromedriver().capabilities(chromeOptions).create();
 
             //maximize window
             driver.manage().window().maximize();

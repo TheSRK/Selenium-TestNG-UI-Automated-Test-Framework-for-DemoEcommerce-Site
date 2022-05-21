@@ -10,12 +10,14 @@ public class ShopPageTestRunner extends BaseTest {
 
 
     String txtShop;
+    HomePage page;
 
     @Test(groups = "shop")
     public void testShopPageHeader(){
         ShopPage shopPage = new ShopPage(driver);
+        homePage = new HomePage(driver);
         Boolean flag = homePage.clickShopFromMenu();
-        if(flag==true){
+        if(flag){
             txtShop = shopPage.getTxtShop();
             Assert.assertEquals(txtShop, "Shop");
         }

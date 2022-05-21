@@ -50,7 +50,7 @@ public class BaseTest {
 
     @AfterTest(groups = "shop")
     public void logout(){
-        driver.close();
+        driver.close ();
     }
 
 

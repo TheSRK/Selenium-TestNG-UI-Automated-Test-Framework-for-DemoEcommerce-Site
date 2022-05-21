@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite thread-count="1" verbose="1" name="E-commerce portal automation">
-    <test name="product purchase">
+<suite thread-count="1" verbose="1" name="E-commerce portal automation" parallel="classes">
+    <test name="product purchase" parallel="classes">
 <!--        <groups>-->
 <!--            <run>-->
 <!--                <include name="shop"></include>-->
@@ -13,7 +13,8 @@
 <!--        <parameter name="browserName" value="chrome" />-->
 
         <classes>
-            <class name="TestRunners.LoginTestRunner"/>
+            <class name="TestRunners.ProductPurchaseTestRunner"/>
+            <class name="TestRunners.ShopPageTestRunner"/>
         </classes>
     </test>
 </suite>
